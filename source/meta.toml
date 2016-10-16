@@ -1,0 +1,76 @@
+[meta]
+# site title, show in <title>
+title = "WangGanxin.Me"
+
+# subtitle, words after title, in description
+subtitle = "守望君的自留地"
+
+# print in html <meta>
+keyword = "守望君,Android Developer,pugo"
+
+# print in html <meta>
+desc = "WangGanxin.Me - 守望君的自留地"
+
+# build links for feed, sitemap
+domain = "wangganxin.me"
+
+# root path for site# if empty, build as http://{domain}/
+root = "http://fuxiaohei.me"
+
+# cover page for homepage
+cover = "@media/cover.jpg"
+
+# global language,
+# its used in global posts and themes, unless pages set lang
+lang = "zh"
+
+
+[[nav]]
+link = "/"
+title = "文章"
+i18n = "home"
+# set nav to active status
+hover = "index"
+blank = false
+
+[[nav]]
+link = "/archive.html"
+title = "归档"
+i18n = "archive"
+hover = "archive"
+blank = false
+
+[[nav]]
+link = "/about.html"
+title = "关于"
+i18n = "about"
+hover = "about"
+blank = false
+
+[[author]]
+name = "WangGanxin"
+nick = "守望君"
+email = "ganxinvip@163.com"
+url = "http://wangganxin.me"
+# 作者的头像，默认用Gravatar的肖像
+avatar = "@media/author.png"
+# 作者的个人介绍
+bio = "Android Developer"
+
+# comment settings
+# please only set one value
+# if multi values, it prints all comment iframes
+[comment]
+# disqus site name
+disqus = "wangganxin"
+# duoshuo short name
+#duoshuo = ""
+
+# analytics settings
+# please only set one value
+# if multi values, it prints all analytics codes
+[analytics]
+# google analytics, need as UA-XXXXX-Y
+google = "UA-85762349-1"
+# baidu analytics, need hash-code in hm.js?hash-code
+baidu = "040ab44dc8597c213cd507f28914c701"
