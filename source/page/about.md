@@ -1,53 +1,32 @@
 ```toml
-title = "About PuGo"
-# slug = "about"
-desc = "some words about pugo"
-date = "2016-03-24 12:24:00"
-author = "pugo"
-# set nav to active status when this page
-hover = "about"
-# set template file to render this page
-template = ""
 
-[meta]
-metadata = "this is meta data"
+title = "关于"
+date = "2016-10-20 20:45:00"
+author = "wangganxin"
+hover = "about"
+
 ```
 
-### Introduction
+### 关于小站
+此前在新浪SAE上搭过WordPress博客，更新频率并不高，这次打算换个新的平台重新开始。刚好喜欢[PuGo](http://pugo.io)这类简洁风的作品，在此感谢其作者`傅小黑`的开源，版权归其所有。
 
-`PuGo` is a simple static site generator by [Golang](https://golang.org). It compiles [markdown](https://help.github.com/articles/markdown-basics/) to site pages with beautiful theme. No dependencies, cross platform and very fast.
+### 关于我
 
-![golang](@media/golang.png)
+大学在广州就读的普通本科，毕业留在了这座城市，工作近两年，从事Android开发，混得一般。
 
-### Quick start
+2016，动荡的一年，渴望变得更强。
 
-1. Download from [PuGo](http://pugo.io) and extract zip archive.
-2. Run `pugo new site` to create new default site.
-2. Run `pugo server`, open `http://localhost:9899` to visit.
+### 联系我
+`守望君` 这个网络ID使用的时间不算长，争取长期使用它吧。想要联系我，可以给我评论留言，或者使用QQ和电邮：
 
+- QQ：445253393 (注明来自 wangganxin.me)
+- Email：ganxinvip@163.com
 
-### Commands
+项目代码相关：
 
-Run a command when run `pugo` executable file:
+- [GitHub](http://github.com/fuxiaohei/)
 
-- `pugo new` create new site, post or page.
-- `pugo build` build static files.
-- `pugo server` build and serve static files.
+### 最后
 
-More details in [Documentation](http://pugo.io/en/docs.html).
+ 嗯，人的很多想法都会随着时间而改变，只是比以前的成熟。
 
-### Writing
-
-`PuGo` support two kinds of content, `post` and `page`. you can create any `.md` file in proper directories in `source` directory. Read the [wiki](http://pugo.io/en/guide/write-new-post.html) to learn the layout format and more details.
-
-### Compile
-
-After you change your source `.md` files, run
-
-    pugo build
-
-To build static files.
-
-### Customize
-
-- Theme: theme documentation is [Here](http://pugo.io/en/docs/tpl/syntax.html)
