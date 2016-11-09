@@ -15,7 +15,7 @@ desc = "WangGanxin.Me - 守望君的自留地"
 domain = "wangganxin.me"
 
 # root path for site# if empty, build as http://{domain}/
-root = "http://fuxiaohei.me"
+root = "http://wangganxin.me"
 
 # cover page for homepage
 cover = "@media/cover.jpg"
