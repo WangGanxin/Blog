@@ -50,7 +50,7 @@ blank = false
 [[author]]
 name = "WangGanxin"
 nick = "守望君"
-email = "ganxinvip@163.com"
+email = "mail@wangganxin.me"
 url = "http://wangganxin.me"
 # 作者的头像，默认用Gravatar的肖像
 avatar = "@media/author.png"

@@ -20,7 +20,7 @@ hover = "about"
 `守望君` 这个网络ID使用的时间不算长，争取长期使用它吧。想要联系我，可以给我评论留言，或者使用QQ和电邮：
 
 - QQ：445253393 (注明来自 wangganxin.me)
-- Email：ganxinvip@163.com
+- Email：mail@wangganxin.me
 
 项目代码相关：
 
