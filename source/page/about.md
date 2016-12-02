@@ -12,7 +12,7 @@ hover = "about"
 
 ### 关于我
 
-大学在广州就读的普通本科，毕业留在了这座城市，工作近两年，从事Android开发，混得一般。
+1992年4月出生，梅州人，2011年远赴广州就读一所不入流的三本大学软件专业，毕业留在了这座城市，工作两年有余，从事Android开发，混得一般。
 
 2016，动荡的一年，渴望变得更强。
 
@@ -24,7 +24,7 @@ hover = "about"
 
 项目代码相关：
 
-- [GitHub](http://github.com/fuxiaohei/)
+- [GitHub](https://github.com/WangGanxin)
 
 ### 最后
 
