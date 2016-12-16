@@ -17,14 +17,16 @@ hover = "about"
 2016近年末了，这是动荡的一年，渴望变得更强。
 
 ### 联系我
-`守望君` 这个网络ID使用的时间不算长，争取长期使用它吧。想要联系我，可以给我评论留言，或者使用QQ和电邮：
+`守望君` 这个网络ID使用的时间不算长，争取长期使用它吧。同时作为互联网从业者，各种网络应用都会有我的身影，尤其是一些技术站点。当然你也可以从这里出发：
+
+- [简书](http://www.jianshu.com/users/4b4c99077c67/latest_articles)
+- [GitHub](https://github.com/WangGanxin)
+- [CSDN](http://blog.csdn.net/justkeeprunning)
+
+或者使用QQ和电邮：
 
 - QQ：445253393 (注明来自 wangganxin.me)
 - Email：mail@wangganxin.me
-
-项目代码相关：
-
-- [GitHub](https://github.com/WangGanxin)
 
 ### 最后
 
