@@ -9,6 +9,16 @@ thumb = ""
 tags = ["Builder","设计模式"]
 ```
 
+>目录<br>
+>一、场景分析<br>
+>二、定义<br>
+>三、Builder模式变种-链式调用<br>
+>四、经典Builder模式<br>
+>五、用到Builder模式的例子<br>
+>六、优缺点<br>
+>参考资料<br>
+
+
 最近在使用[Retrofit](https://github.com/square/retrofit)和[OkHttp](https://github.com/square/okhttp)框架的过程中发现创建相关对象时频繁使用到了Builder模式，链式调用的方式让代码变得简洁、易懂，但自己也只是知其然而不知其所以然，所以决定做个笔记加深下印象。
 
 ### 一、场景分析
@@ -399,7 +409,7 @@ public class Test{
 		System.out: Info :User [name =Jack,cardID=10086,age=25,address=GuangZhou]
 
 
-### 六、用到Builder模式的例子
+### 五、用到Builder模式的例子
 
 - Android中的AlertDialog.Builder
 
@@ -455,7 +465,7 @@ Retrofit retrofit = new Retrofit.Builder()
 
 可见在实际使用中，均省略掉了Director角色，在很多框架源码中，涉及到Builder模式时，大多都不是经典GOF的Builder模式，而是选择了结构更加简单的后者。
 
-### 七、优缺点
+### 六、优缺点
 
 优点：
 

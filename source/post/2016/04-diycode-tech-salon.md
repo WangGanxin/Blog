@@ -9,13 +9,20 @@ thumb = ""
 tags = ["diycode"]
 ```
 
+>目录<br>
+>一、内存管理优化<br>
+>二、动态更新<br>
+>三、hotfix<br>
+>四、App安全<br>
+>五、一些感受<br>
+
 最近事情比较多，很遗憾这是一篇迟来的分享。
 
 [DiyCode技术沙龙](http://www.diycode.cc/) 是由广州社区的成员合力举办的一场Android技术分享会，因为获得了一张免费的门票，加上分享的主题都比较感兴趣，所以去参加学习一下，总的来说干货满满，见识了很多的技术大牛。
 
 ![diycode-tech-salon](/media/2016/diycode-tech-salon.png)
 
-### 内存管理优化
+### 一、内存管理优化
 
 **Low Memory Killder(LMK)**
 
@@ -165,7 +172,7 @@ if (IS_DEBUG && Build.VERSION.SDK_INT >= 9) {
 		- 开辟多进程（当然，也不是越多越好）
 		- 借助lint来规避一些常见的编码问题
 
-### 动态更新
+### 二、动态更新
 随着App日益庞大以及越来越复杂的逻辑，不仅需要团队多人的协作开发还有方法数越界等问题，因此，插件化以此衍生出而来，它的好处有以下几个方面：
 
 - 插件模块动态升级
@@ -175,7 +182,7 @@ if (IS_DEBUG && Build.VERSION.SDK_INT >= 9) {
 因为对这一块接触了解的并不是很多，在此不作更详细的记录。
 
 
-### hotfix
+### 三、hotfix
 所谓热补丁（hotfix），它可以让应用在无须重新安装下能够自动更新。对于热补丁的应用，可能我们会存在几个等级的需求：
 
 1. **Bugfix**  : 简单的bugfix，解决一些空指针之类的问题
@@ -237,7 +244,7 @@ if (IS_DEBUG && Build.VERSION.SDK_INT >= 9) {
 
 ![hotfix-compare](/media/2016/hotfix-compare.png)
 
-### App安全
+### 四、App安全
 
 **代码安全**
 
@@ -318,6 +325,6 @@ TOKEN
 - accessToken过期后，通过refreshToken更新accessToken
 - refreshToken过期后，则需要用户重新登录
 
-### 一些感受
+### 五、一些感受
 
 额，做技术的人好像蛮容易秃顶的...

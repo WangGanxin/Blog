@@ -8,10 +8,24 @@ author = "wangganxin"
 thumb = ""
 tags = ["性能优化"]
 ```
+>目录<br>
+>一、View的过度绘制（OverDraw）<br>
+>二、View的绘制流程<br>
+>三、三种常用布局的比较<br>
+>四、RecyclerView VS ListView 之View层级关系<br>
+>五、高效布局标签<br>
+>六、去掉window的背景<br>
+>七、去掉其他不必要的背景<br>
+>八、ClipRect & QuickReject<br>
+>九、善用draw9patch<br>
+>十、慎用Alpha<br>
+>十一、应该早点知道的API<br>
+>十二、其他<br>
+
 
 本文是[有心课堂-性能优化合辑](http://stay4it.com/course/26) 视频的学习笔记，也翻阅过网上的相关资料，整理了个人认为比较重要的知识点。
 
-### View的过度绘制（OverDraw）
+### 一、View的过度绘制（OverDraw）
 
 OverDraw，是指在一帧的时间内（16.67ms）像素被绘制了多次，理论上一个像素只绘制一次是最优的，但由于重叠的布局导致一些像素被重复绘制多次，而每次绘制都会对应到CPU的一组绘图命令和GPU的一些操作，当这个操作超过16.67ms时就会出现掉帧的现象，即我们常说的卡顿，所以对重叠不可见元素的重复绘制会产生额外的开销，我们需要尽量减少OverDraw的发生。
 
@@ -25,7 +39,7 @@ Android提供了测量OverDraw的选项，在开发者选项->调试GPU过度绘
 
 ![GPU-OverDraw](/media/2016/gpu-overdraw.png)
 
-### View的绘制流程
+### 二、View的绘制流程
 
 - measure :为整个View树计算实际的大小，即设置实际的高（对应属性：mMeasuredHeight）和宽(对应属性：mMeasureWidth)，每个View的控件的实际宽高都是由父视图和本身的视图决定的。
 - layout：为将整个根据子视图的大小以及布局参数将View树放到合适的位置上。
@@ -33,7 +47,7 @@ Android提供了测量OverDraw的选项，在开发者选项->调试GPU过度绘
 
 <!--more-->
 
-### 三种常用布局的比较
+### 三、三种常用布局的比较
 
 RelativeLayout：
 
@@ -62,7 +76,7 @@ FrameLayout：
 - 尽可能的使用RelativeLayout以减少View层级，使View树趋于扁平化
 - 在不影响层级深度的情况下，使用LinearLayout和FrameLayout，而不是RelativeLayout
 
-### RecyclerView VS ListView 之View层级关系
+### 四、RecyclerView VS ListView 之View层级关系
 
 		
 					 | --- RecyclerView
@@ -73,7 +87,7 @@ FrameLayout：
 从View层级关系，我们可以看出，在实际开发中更推荐使用RecyclerView。
 
 
-### 高效布局标签
+### 五、高效布局标签
 
 - Merge标签：减少视图的层级结构。
 
@@ -103,7 +117,7 @@ ViewStub是一个轻量级的View，它是一个看不见的，不占布局位�
 
 - Space标签：空白控件。
 
-### 去掉window的背景
+### 六、去掉window的背景
 
 在我们使用了Android自带的一些主题时，window会被默认添加一个纯色的背景，这个背景是被DecorView持有的，当我们的自定义布局时又添加一张背景图或者设置背景色，那么DecorView的background此时对我们来说是无用的，但是它会产生一次OverDraw，带来绘制性能损耗。
 
@@ -115,24 +129,24 @@ ViewStub是一个轻量级的View，它是一个看不见的，不占布局位�
 
 	android:windowbackground="null";
 
-### 去掉其他不必要的背景
+### 七、去掉其他不必要的背景
 
 - 有时候为了方便会先给Layout设置一个整体的背景，再给子View设置背景，会造成重叠，如果子View宽度match_parent，可以看到完全覆盖了Layout的一部分，这里就可以通过分别设置背景来减少重绘
 - 如果采用的是selector的背景，将normal状态的color设置为"@android:color/transparent"也同样可以解决问题。
 
 这里只简单举两个例子，我们在开发过程中的一些习惯性的思维定式会带来不经意的OverDraw，所以开发过程中我们为某个View或者ViewGroup设置背景的时候，先思考下是否真的有必要，或者思考下这个背景能不能分段设置在子View上，而不是图方便直接设置在根View上。
 
-### ClipRect & QuickReject
+### 八、ClipRect & QuickReject
 
 为了解决OverDraw的问题，Android系统会通过避免绘制那些完全不可见的组件来尽量减少消耗，但不幸的是，对于那些过于复杂的自定义View（通常重写了OnDraw方法），Android系统无法检测在OnDraw里面具体会执行什么操作，系统无法监控并自动优化，也就无法避免OverDraw了。但是我们可以通过canvas.clipRect()来帮助系统识别那些可见的区域，这个方法可以指定一块矩形区域，只有在这个区域内才会被绘制，其他的区域会被忽视，这个API可以很好的帮助那些有多组重叠组件的自定义View来控制显示的区域，同时clipRect方法还可以帮助节约CPU与GPU资源，在clipRect区域之外的绘制指令都不会被执行，那些部分内容在矩形区域内的组件，任然会得到绘制。除了clipRect方法之外，我们还可以使用canvas.quickReject()来判断是否没和某个矩形相交，从而跳过那些非矩形区域内的绘制操作。
 
-### 善用draw9patch
+### 九、善用draw9patch
 
 给ImageView加一个边框，遇到这种需求，通常在ImageView后面设置一张背景图，露出边框便完美解决问题，此时这个ImageView，设置了两次drawable，底下一层仅仅是为了作为图片的边框而已，但是两层drawable的重叠区域却绘制了两次，导致OverDraw。
 
 优化方案：将背景drawable制作成draw9patch，并且将和前景重叠的部分设置为透明，由于Android的2D渲染器会优化draw9patch中的透明区域，从而优化了这次OverDraw。但是背景图片必须制作成draw9patch才行，因为Android 2D渲染器只对draw9patch有这个优化，否则，一张普通的png，就算你把中间的部分设置成透明，也不会减少这次OverDraw.
 
-### 慎用Alpha
+### 十、慎用Alpha
 
 假如对一个View做Alpha转化，需要先将View绘制出来，然后做Alpha转化，最后将转换的效果在界面上。通俗得说，做Alpha转化就需要对当前View绘制两遍，可想而知，绘制效率会的大打折扣，耗时会翻倍，所以Alpha还是慎用。如果一定要做Alpha转化的话，可以采用缓存的方式。
 
@@ -142,7 +156,7 @@ ViewStub是一个轻量级的View，它是一个看不见的，不占布局位�
 
 通过setLayerType方式可以将当前界面缓存在GPU中，这样不需要每次绘制原始界面，但是GPU内存是相当宝贵的，所以用完要马上释放掉。
 
-### 应该早点知道的API
+### 十一、应该早点知道的API
 
 1. android：lineSpacingExtra
    
@@ -168,7 +182,7 @@ ViewStub是一个轻量级的View，它是一个看不见的，不占布局位�
 
 	实现丰富的色彩效果，提高体验度。譬如：滑动Viewpager时，背景色渐变；随着EditText输入框的长度变化背景色等等
 
-### 其他
+### 十二、其他
 
 - 尽量避免过多的使用static变量
 - Avtivity和Activity之间或Fragment和Fragment之间使用Intent、Bundle传递数据

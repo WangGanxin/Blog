@@ -8,6 +8,10 @@ author = "wangganxin"
 thumb = ""
 tags = ["ButterKnife"]
 ```
+>目录<br>
+>一、使用姿势<br>
+>二、需要注意的点<br>
+>最后<br>
 
 [ButterKnife](https://github.com/JakeWharton/butterknife)(黄油刀)是Android上的一款依赖注入框架，目前已经是8.4版本了，迭代还是蛮快的，最近准备在自己的App上拿来练练手，浏览了网上的一些资料，大多比较陈旧，于是自己稍微归纳了下：
 
