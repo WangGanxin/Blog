@@ -4,7 +4,7 @@ slug = "07-my-2016-summary"
 desc = "07 my 2016 summary"
 date = "2017-01-01 08:12:09"
 update_date = "2017-01-01 08:12:09"
-author = ""
+author = "wangganxin"
 thumb = ""
 tags = ["又一年"]
 ```
