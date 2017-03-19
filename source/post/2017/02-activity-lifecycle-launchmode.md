@@ -133,16 +133,18 @@ public class MainActivity extends AppCompatActivity {
 - action的匹配规则
 
 > 1. action是一个字符串，系统预定义了一些action，我们也可以在应用中定义自己的action
-2. 一个匹配规则中可以有多个action
-3. action的匹配要求Intent中的action存在且必须和过滤规则长得其中一个action相同
-4. action区分大小写，大小写不同字符串相同的action会匹配失败
+> 2. 一个匹配规则中可以有多个action
+> 3. action的匹配要求Intent中的action存在且必须和过滤规则长得其中一个action相同
+> 4. action区分大小写，大小写不同字符串相同的action会匹配失败
 
 - category的匹配规则
+
 > 1. category同样是一个字符串，系统预定义了一些category，也可以在应用中定义自己的
-2. 要求Intent中可以没有category，但是一旦有category，不管有几个，每个都要能够和过滤规则中的任何一个category相同
-3. 为什么跳转activity的时候不设置category也可以匹配呢？原因是系统在调用startActivity或者startctivityForResult的时候默认为Intent加上了“android.intent.catetgory.DEFAULT”，同时为了我们的activity能够接受隐式调用，就必须在intent-filter中指定“android.intent.catetgory.DEFAULT”这个category。
+> 2. 要求Intent中可以没有category，但是一旦有category，不管有几个，每个都要能够和过滤规则中的任何一个category相同
+> 3. 为什么跳转activity的时候不设置category也可以匹配呢？原因是系统在调用startActivity或者startctivityForResult的时候默认为Intent加上了“android.intent.catetgory.DEFAULT”，同时为了我们的activity能够接受隐式调用，就必须在intent-filter中指定“android.intent.catetgory.DEFAULT”这个category。
 
 - data的匹配规则
+
 > 1. 匹配规则和action类似，如果过滤规则中定义了data，那么Intent中必须也要定义可匹配的data
 
 
