@@ -26,6 +26,8 @@ Volley是Google在2013年I/O大会上推出的Android异步网络请求框架和
 - Android 2.2以下基于HttpClient，2.3及以上基于HttpUrlConnenction
 - 提供了简便的图片加载工具
 
+<!--more-->
+
 ###二、工作流程
 
 既然是探索Volley的工作流程，我们可以一步步追踪其源码，先来看一个典型的发送Volley网络请求的用法：
@@ -104,11 +106,12 @@ Volley是Google在2013年I/O大会上推出的Android异步网络请求框架和
 - 根据HttpStack 创建一个NetWork的具体实现类BasicNetwork对象
 - 根据DiskBasedCache磁盘缓存对象、network对象构建一个RequestQueue，调用RequestQueue的start方法启动。
 
-> 通过源码可以看出，我们可以抛开Volley工具类构建自定义的RequestQueue，采用自定义的HttpStack，采用自定义的NetWork实现，采用自定义的Cache实现来构建RequestQueue，Volley的面向接口编程，高可拓展性的魅力就源于此。
+> **通过源码可以看出，我们可以抛开Volley工具类构建自定义的RequestQueue，采用自定义的HttpStack，采用自定义的NetWork实现，采用自定义的Cache实现来构建RequestQueue，Volley的面向接口编程，高可拓展性的魅力就源于此。**
+> 
 
 <br/>
 
-> 关于HttpURLConnection 和 HttpClient的选择及原因 <br/>
+> **关于HttpURLConnection 和 HttpClient的选择及原因** <br/>
 > 1. 在Android2.2之前，HttpURLConnection 有个重大的bug，调用 close() 函数会影响连接池，导致连接复用失效，所以在Android2.2之前使用 HttpURLConnection 需要关闭 keepAlive <br/>
 > 2. 在Android2.3，HttpURLConnection 默认开启了 gzip 压缩，提高了 HTTPS 的性能；在Android 4.0,HttpURLConnection 支持了请求结果缓存<br/>
 >
@@ -145,10 +148,10 @@ start方法执行完，由此得到RequestQueue，我们只需要构建相应的
 
 **关于Request类**
 
-> Request是一个网络请求的抽象类，非抽象子类有StringRequest、JsonRequest、ImageRequest或者自定义子类，我们通过构建这个对象，将其加入RequestQueue来完成一次网络请求操作 <br/>
-> Request子类必须实现的方法有两个:parseNetworkResponse 和 deliverResponse
+> 1. Request是一个网络请求的抽象类，非抽象子类有StringRequest、JsonRequest、ImageRequest或者自定义子类，我们通过构建这个对象，将其加入RequestQueue来完成一次网络请求操作 <br/>
+> 2. Request子类必须实现的方法有两个:parseNetworkResponse 和 deliverResponse
 > Volley支持8中请求方式：**GET**、**POST**、**PUT**、**DELETE**、**HEAD**、**OPTIONS**、**TRACE**、**PATCH** <br/>
-> Request类包含了请求URL，请求方式，请求Header，请求Body，请求优先级等信息
+> 3. Request类包含了请求URL，请求方式，请求Header，请求Body，请求优先级等信息
 
 RequestQueue的add方法内部实现：
 
@@ -361,11 +364,12 @@ mResponsePoster的execute方法传入了一个ResponseDeliveryRunnable对象：
 
 其实performRequest内部转换成Response的处理过程，这里借用[Volley源码解析](http://a.codekk.com/detail/Android/grumoon/Volley%20%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90) 里的一张图，更加从宏观上清晰的说明问题了：
 
-![volley-response-process](/media/2017/volley-response-process-flow-chart.png)
+<center>![volley-response-process](/media/2017/volley-response-process-flow-chart.png)</center>
 
 从上到下表示从得到数据后一步步的处理，箭头旁的注释表示该步处理后的实体类。
 
 **关于Cache类**
+
 > 1. 缓存接口，代表一个可以获取请求结果、存储请求结果的缓存<br/>
 > 2. 默认的两个实现子类：NoCache和DiskBasedCache
 > 3. DiskBasedCache类会把从服务器返回的信息写入磁盘，然后从磁盘取出缓存，这其中涉及了一些静态的方法如writeInt、writeLong等等，何解？原因之一是Java的IO本身是对byte进行操作，一个int占4个byte，需要按位写入，另一方面也是因为网络字节序是大端字节序，在80x86的平台中，是以小端法存放的，比如我们经过网络发送0x12345678这个整型，但实际上在流中是0x87654321
@@ -373,7 +377,7 @@ mResponsePoster的execute方法传入了一个ResponseDeliveryRunnable对象：
 
 好了，到这里Volley的整体流程大概梳理了一遍，可能稍微讲得有点乱，当然也仅仅是个人的记录为主，最后，放上Volley官方的请求流程图镇楼（原本想着自己画一张流程图，但翻了翻发觉画不出比这个更好的了）：
 
-![volley-request](/media/2017/volley-request.png)
+<center>![volley-request](/media/2017/volley-request.png)</center>
 
 ###参考资料
 
