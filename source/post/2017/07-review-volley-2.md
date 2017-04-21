@@ -15,7 +15,7 @@ tags = ["Volley"]
 >二、重试策略<br>
 >参考资料<br>
 
-本文是建立在对Volley框架的工作流程有一定基础了解的情况下继续深入的，这里顺便贴上我写的上篇文章[《重温Volley源码(一)：工作流程》](https://github.com/mcxiaoke/android-volley) ，欢迎阅读指正。
+本文是建立在对Volley框架的工作流程有一定基础了解的情况下继续深入的，这里顺便贴上我写的上篇文章[《重温Volley源码(一)：工作流程》](https://wangganxin.me/2017/4/20/06-review-volley-1.html) ，欢迎阅读指正。
 
 ###一、核心类
 
