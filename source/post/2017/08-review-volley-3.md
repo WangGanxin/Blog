@@ -275,7 +275,7 @@ public class HurlStack implements HttpStack {
 
 ```
 
-`HurlStack(UrlRewriter urlRewriter, SSLSocketFactory sslSocketFactory)`这个构造方法仅为`HurlStack(UrlRewriter urlRewriter)`所调用，并传入了一个null的SSLSocketFactory，所以，知道了问题的根源，我们只要构造第三个构造函数，并传入相应的SSLSocketFactory对象即可。
+`HurlStack(UrlRewriter urlRewriter, SSLSocketFactory sslSocketFactory)`这个构造方法仅为`HurlStack(UrlRewriter urlRewriter)`所调用，并传入了一个null的SSLSocketFactory，所以，知道了问题的根源，我们只要创建HurlStack对象的时候调用第三个构造函数，并传入相应的SSLSocketFactory对象即可。
 
 这里给出一个网上写好的示例，替换掉原有源码里的Volley类：
 
