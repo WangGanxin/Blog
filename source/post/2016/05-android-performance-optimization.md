@@ -178,7 +178,15 @@ ViewStub是一个轻量级的View，它是一个看不见的，不占布局位�
 
 	设置ScrollView撑满父容器
 
-6. ArgbEvaluator类
+6. android:clipChildren
+
+	定义它的子控件是否在他应有的边界内进行绘制，默认情况为true，也就是不允许进行扩展绘制
+
+7. android:clipToPadding
+
+	定义ViewGroup是否允许在padding中绘制，默认情况为true，也就是把padding中的值都进行裁切。该属性一般配合padding使用
+
+8. ArgbEvaluator类
 
 	实现丰富的色彩效果，提高体验度。譬如：滑动Viewpager时，背景色渐变；随着EditText输入框的长度变化背景色等等
 
