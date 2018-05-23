@@ -124,7 +124,7 @@ ReactNativeHost主要是负责ReactInstanceManager的实例创建，从它的`cr
 - ReactRootView#startReactApplication()
 - 给当前Activity设置setContentView()
 
-ReactRootView.java
+**ReactRootView.java**
 
 ```Java
 
